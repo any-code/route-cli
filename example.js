@@ -1,20 +1,5 @@
-# route-cli
-
-> Command router for nodeJs CLI applications 
-
-## Getting Started
-
-### 1. Installation
-
-``` bash
-npm install route-cli
-```
-
-### 2. Examples
-
-``` javascript
 #! /usr/bin/env node
-var router = require('route-cli');
+var router = require('./index');
 
 // basic route
 // @example-command: {appname} example --save
@@ -41,14 +26,6 @@ router.route(['example', 'arguments'], function(command, additionalCommands, fla
 
 });
 
-//Execute the application either passing in the process.argv other array or just use defaults
 router.execute();
 
-```
 
-## Copyright and license
-Copyright (c) 2015, Any Code <lee@anycode.io>
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
