@@ -1,6 +1,6 @@
 var router = require('../index');
 
-exports.testCorrectRoute = function(test){
+exports.testCorrectRoute = function(test) {
     var called = false;
 
     router.route(['hello', 'world'], function() { called = true; });
@@ -10,7 +10,7 @@ exports.testCorrectRoute = function(test){
     test.done();
 };
 
-exports.testIncorrectRoute = function(test){
+exports.testIncorrectRoute = function(test) {
     var called = false;
 
     router.route(['hello', 'world'], function() { called = true; });
@@ -20,7 +20,7 @@ exports.testIncorrectRoute = function(test){
     test.done();
 };
 
-exports.testAdditionalCommands = function(test){
+exports.testAdditionalCommands = function(test) {
     var called = false,
         additionalCommands = [];
 
@@ -37,7 +37,7 @@ exports.testAdditionalCommands = function(test){
     test.done();
 };
 
-exports.testFlags = function(test){
+exports.testFlags = function(test) {
     var called = false,
         commandFlags = [];
 
@@ -52,6 +52,28 @@ exports.testFlags = function(test){
         "were not captured");
 
     test.done();
+};
+
+exports.testDescribe = function(test) {
+    var fn = function() {};
+
+    router.route(['destroy', 'world'], fn);
+    router.route(['save', 'world'], fn);
+    router.route(['destroy', 'moon'], fn);
+    router.route(['save', 'moon'], fn);
+
+    var describedCommands = router.describe();
+
+    test.ok(describedCommands.length === 4, "described " + describedCommands.length + " but expected" +
+        " to describe 4");
+    test.equal(describedCommands[0], "destroy world", "the described command did not match the expected " +
+        "'destroy world'");
+    test.done();
+};
+
+exports.tearDown = function (callback) {
+    router.commands = [];
+    callback();
 };
 
 

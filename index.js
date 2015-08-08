@@ -68,6 +68,28 @@ var obj = require('javascript-object-paraphernalia'),
         };
 
         /**
+         * @description generates a list describing the commands that have currently been registered for the given
+         *  set of routes
+         *
+         * @returns {Array<String>}
+         */
+        Router.prototype.describe = function() {
+            var describeCommands = [],
+                traverseAvailableCommands = function(obj) {
+                    for (item in obj) {
+                        if (obj[item].commandPath !== undefined) {
+                            describeCommands.push(obj[item].commandPath.join(" "));
+                        } else {
+                            traverseAvailableCommands(obj[item]);
+                        }
+                    }
+                };
+
+            traverseAvailableCommands(router.commands);
+            return describeCommands;
+        };
+
+        /**
          * Adds matchExpressions to any registered command
          *
          * @param commands
