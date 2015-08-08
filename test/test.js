@@ -71,6 +71,16 @@ exports.testDescribe = function(test) {
     test.done();
 };
 
+exports.testDefault = function(test) {
+    var called = false;
+
+    router.default(function() { called = true;  });
+    router.execute([]);
+
+    test.ok(called, "default command was not called");
+    test.done();
+};
+
 exports.tearDown = function (callback) {
     router.commands = [];
     callback();

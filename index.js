@@ -14,6 +14,7 @@ var obj = require('javascript-object-paraphernalia'),
 
         function Router() {
             this.commands = {};
+            this.defaultCommand = function() {};
         }
 
         /**
@@ -38,6 +39,10 @@ var obj = require('javascript-object-paraphernalia'),
             for (action in actions) {
                 var $action = actions[action];
                 $action.action.call(this, $action.commandPath, args.slice($action.commandPath.length), flags);
+            }
+
+            if (actions.length === 0) {
+                this.defaultCommand.call(this, '', args, flags);
             }
         };
 
@@ -65,6 +70,14 @@ var obj = require('javascript-object-paraphernalia'),
             };
             obj.merge(this.commands, data.structure);
             this.initializeCommandMatchers(this.commands);
+        };
+
+        /**
+         * @description sets a default action to occur if no routes are satisfied
+         * @param {function} action
+         */
+        Router.prototype.default = function(action) {
+            this.defaultCommand = action;
         };
 
         /**

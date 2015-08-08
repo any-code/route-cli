@@ -1,6 +1,13 @@
 #! /usr/bin/env node
 var router = require('./index');
 
+// @example-command: {appname}
+router.default(function(command, additionalCommands, flags) {
+
+    console.log("Called with no commands", command, additionalCommands, flags);
+
+});
+
 // @example-command: {appname} test case --save
 router.route(['test', 'case'], function(command, additionalCommands, flags) {
 
@@ -22,9 +29,9 @@ router.route(['example', 'arguments'], function(command, additionalCommands, fla
 
 });
 
+// router.execute() with no arguments will default to process.argv.slice(2)
+router.execute([]);
+router.execute(['unknown']);
 router.execute(['test', 'case', '--save']);
 router.execute(['example', 'with', 'more', 'arguments']);
 router.execute(['example', '--deflate', 'arguments', 'one', 'two', 'three']);
-
-
-

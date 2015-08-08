@@ -1,6 +1,6 @@
 {
   "name": "route-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Command router for nodeJs CLI applications",
   "main": "index.js",
   "scripts": {
