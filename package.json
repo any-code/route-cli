@@ -1,7 +1,7 @@
 {
   "name": "route-cli",
-  "version": "1.0.3",
-  "description": "Command router for nodeJs CLI applications",
+  "version": "1.0.5",
+  "description": "Command line router for CLI applications",
   "main": "index.js",
   "scripts": {
     "test": "nodeunit"
@@ -10,14 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/any-code/route-cli.git"
   },
-  "keywords": [
-    "route",
-    "router",
-    "cli",
-    "command",
-    "application",
-    "app"
-  ],
+  "keywords": ["cli router", "command line router", "cli app router", "application router", "route", "router", "cli",
+    "command", "application", "app"],
   "author": "Lee Tagg <lee@anycode.io>",
   "license": "ISC",
   "bugs": {
