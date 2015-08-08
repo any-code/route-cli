@@ -1,5 +1,7 @@
 # route-cli
 
+[![Build Status](https://travis-ci.org/any-code/route-cli.svg?branch=master)](https://travis-ci.org/any-code/route-cli)
+
 > Command router for nodeJs CLI applications 
 
 ## Getting Started
